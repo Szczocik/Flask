@@ -88,7 +88,10 @@ def zakup(params):
 
 
 @manager.assign("sprzedaz")
-def sprzedaz(product_name, product_count, product_price):
+def sprzedaz(params):
+    product_name = params[0]
+    product_count = params[1]
+    product_price = params[2]
     if not manager.store.get(product_name):
         print("Produktu nie ma w magazynie!")
     if manager.store.get(product_name)['count'] < product_count:
